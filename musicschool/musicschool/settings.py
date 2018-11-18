@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'bootstrap3',
+    'jquery',
     'musicschool.groups',
 ]
 
@@ -102,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_REDIRECT_URL = '/home'
+LOGIN_REDIRECT_URL = 'account/home'
 LOGOUT_REDIRECT_URL = '/'
 
 # Internationalization
@@ -123,3 +124,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'musicschool', 'static', 'static_root')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'musicschool', 'static', 'static_dirs'),
+)
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'musicschool', 'media',)
+MEDIA_URL = '/musicschool/media/' 

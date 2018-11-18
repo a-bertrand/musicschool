@@ -1,12 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <title>{% block title %}Django Auth Tutorial{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href={% static "main.css" %}/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
 </head>
 <body>
   <main>
+  {% include "layout/header.html" %}
     {% block content %}
+      
     {% endblock %}
   </main>
 </body>

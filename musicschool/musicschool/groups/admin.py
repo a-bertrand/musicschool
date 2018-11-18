@@ -8,6 +8,7 @@ class MemberGroupAdmin(admin.ModelAdmin):
 
 class MediaAdmin(admin.ModelAdmin):
     list_display = ('id','name')
+    readonly_fields = ('image_tag',)
 
 class Articledmin(admin.ModelAdmin):
     list_display = ('id','title')
