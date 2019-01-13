@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
-from  .models import MemberGroup
+from  .models import MemberGroup, Media, Article
 
 def signup(request):
     if request.method == 'POST':
@@ -18,9 +18,35 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form':form})
 
-def home (request):
-    if User.is_authenticated:
+def home(request):
+    if User.is_staff:
+        return redirect('/admin')
+    elif User.is_authenticated:
+        membergroup =  request.user.members_group.all()[0]
+        return render(
+            request, 
+            'home.html',
+            {
+                'membergroup':membergroup,
+            }
+        )
+    else:
+        return redirect('login')
 
-        return render(request, 'home.html', {'form':form})
+def detail(request, article_id):
+    if User.is_authenticated:   
+        article = Article.objects.get(pk=article_id)
+        membergroup =  request.user.members_group.all()[0]
+        if article in membergroup.articles.all():
+            return render(
+                request, 
+                'article_detail.html', 
+                {
+                    'article':article, 
+                    'medias': article.media.all()
+                }
+            ) 
+        else:
+            return render(request, 'layout/not_right_page.html')
     else:
         return redirect('login')

@@ -1,17 +1,15 @@
 {% block content %}
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">Ecole de musique</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      
-    </div>
-  </div>
-</nav>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light margin-bottom-50">
+		<a class="navbar-brand" href="{% url 'home' %}">Ecole de musique d'Ancenis</a>
+		<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+			<ul class="nav ">
+				{% if user.is_authenticated %}
+				<li class="nav-item active">
+					<a class="nav-link" href="{% url 'logout' %}">Se déconnecter <span class="sr-only">Se déconnecter</span></a>
+				</li>
+				{% else %}
+			{% endif %}
+			</ul>
+		</div>
+	</nav>
 {% endblock %}

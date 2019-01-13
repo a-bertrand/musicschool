@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+	<h2>Article: {{article.title}}</h2>
+	<p>
+		{{article.content}}
+	</p>
+	{% for media in medias %}
+		{% if media.image %}
+			<img src='{{media.image.url}}'  class="img-fluid" />
+		{% elif media.video %}
+			<video width="320" height="240" controls>
+				<source src="{{media.video.url}}" type="video/mp4">
+				Votre navigateur de supporte pas les vidéos
+			</video>
+		{% endif %}
+		{% if media.text %}
+			<p>
+				{{media.text}}
+			</p>
+		{% endif %}
+	{% endfor %}
+{% endblock %}

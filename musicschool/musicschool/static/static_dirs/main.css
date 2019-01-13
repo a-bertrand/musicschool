@@ -1,12 +1,13 @@
-.nav {
-    background-color :#722872;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .navbar {
-    background-color :#722872;
-   }
-  
+/* Override bootstrap */
+.card {
+    min-height: 200px;
+}
+.margin-bottom-100 {
+    margin-bottom: 100px;
+} 
+.margin-bottom-50 {
+    margin-bottom: 50px;
+}   
+.margin-bottom-25 {
+    margin-bottom: 25px;
+}    

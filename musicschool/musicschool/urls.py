@@ -25,10 +25,12 @@ from musicschool.groups import views as groups_views
 
 urlpatterns = [
 	path('', auth_views.LoginView.as_view()),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('accounts/register',groups_views.signup, name='register'),
-    path('account/home',groups_views.home, name='register'),
+    path('home',groups_views.home, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('article/<int:article_id>/', groups_views.detail, name='article-detail'),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 print ('urls.py MEDIA_URL: %s' % (settings.MEDIA_URL))
