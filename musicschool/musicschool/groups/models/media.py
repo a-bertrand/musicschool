@@ -8,7 +8,7 @@ class Media(models.Model):
     name    = models.CharField(max_length=30)
     video   = models.FileField(upload_to='videos', null=True, blank=True)
     image   = models.FileField(upload_to='images', null=True, blank=True )
-    text 	= MarkdownxField(max_length=2000, null=True, blank=True)
+    text 	= models.TextField(max_length=2000, null=True, blank=True)
 
     def __str__(self):
         return self.name

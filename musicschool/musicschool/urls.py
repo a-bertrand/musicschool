@@ -1,5 +1,3 @@
-from markdownx import urls as markdownx
-
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -16,7 +14,6 @@ urlpatterns = [
     path('accounts/register',groups_views.signup, name='register'),
     path('home',groups_views.home, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('markdownx/', include(markdownx)),
     path('article/<int:article_id>/', groups_views.detail, name='article-detail'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

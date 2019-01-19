@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'rest_framework',
-    'markdownx',
 
     'bootstrap3',
     'jquery',
+    
     'musicschool.groups',
 ]
 

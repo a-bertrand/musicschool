@@ -1,7 +1,5 @@
 from django.contrib import admin
-from markdownx.widgets import AdminMarkdownxWidget
 from django.db import models
-from markdownx.admin import MarkdownxModelAdmin
 
 # Register your models here.
 from .models import (
@@ -19,9 +17,6 @@ class MemberGroupAdmin(admin.ModelAdmin):
 
 class MediaAdmin(admin.ModelAdmin):
     list_display = ('id','name')
-    text = {
-        models.TextField: {'widget': AdminMarkdownxWidget},
-    }
 
 
 class ArticleAdmin(admin.ModelAdmin):
@@ -56,7 +51,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Media, MarkdownxModelAdmin)
+admin.site.register(Media, MediaAdmin)
 
 admin.site.register(MemberGroup, MemberGroupAdmin)
 admin.site.register(Article, ArticleAdmin)
