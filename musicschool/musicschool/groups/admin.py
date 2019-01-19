@@ -1,24 +1,34 @@
 from django.contrib import admin
+from markdownx.widgets import AdminMarkdownxWidget
+from django.db import models
+from markdownx.admin import MarkdownxModelAdmin
 
 # Register your models here.
-from musicschool.groups.models import (
-    Media, 
+from .models import (
     Article, 
-    MemberGroup, 
+    Category,
+    Media, 
+    MemberGroup,
     UserInformations
 )
+
 
 class MemberGroupAdmin(admin.ModelAdmin):
     list_display = ('id','name')
 
+
 class MediaAdmin(admin.ModelAdmin):
     list_display = ('id','name')
-    readonly_fields = ('image_tag',)
+    text = {
+        models.TextField: {'widget': AdminMarkdownxWidget},
+    }
 
-class Articledmin(admin.ModelAdmin):
+
+class ArticleAdmin(admin.ModelAdmin):
     list_display = ('id','title')
 
-class UserInformationsdmin(admin.ModelAdmin):
+
+class UserInformationsAdmin(admin.ModelAdmin):
     list_display = (
         'id', 
         'get_firstname', 
@@ -36,9 +46,18 @@ class UserInformationsdmin(admin.ModelAdmin):
             return obj.user.last_name
         else:
             return ''
-        
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'name'
+    )
+
+
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Media, MarkdownxModelAdmin)
 
 admin.site.register(MemberGroup, MemberGroupAdmin)
-admin.site.register(Media, MediaAdmin)
-admin.site.register(Article, Articledmin)
-admin.site.register(UserInformations, UserInformationsdmin)
+admin.site.register(Article, ArticleAdmin)
+admin.site.register(UserInformations, UserInformationsAdmin)

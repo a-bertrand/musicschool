@@ -19,17 +19,21 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form':form})
 
 def home(request):
-    if User.is_staff:
-        return redirect('/admin')
-    elif User.is_authenticated:
-        membergroup =  request.user.members_group.all()[0]
-        return render(
-            request, 
-            'home.html',
-            {
-                'membergroup':membergroup,
-            }
-        )
+    if request.user:
+        if request.user.is_staff:
+            return redirect('/admin')
+        elif request.user.is_authenticated:
+            try:
+                membergroup =  request.user.members_group.all()[0]
+            except:
+                membergroup = None
+            return render(
+                request, 
+                'home.html',
+                {
+                    'membergroup':membergroup,
+                }
+            )
     else:
         return redirect('login')
 
