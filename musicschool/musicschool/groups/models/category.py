@@ -1,4 +1,3 @@
-from markdownx.models import MarkdownxField
 from django.db import models
 
 
