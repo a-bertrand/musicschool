@@ -17,6 +17,3 @@ urlpatterns = [
     path('article/<int:article_id>/', groups_views.detail, name='article-detail'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-print ('urls.py MEDIA_URL: %s' % (settings.MEDIA_URL))
-print ('urls.py MEDIA_ROOT: %s' % (settings.MEDIA_ROOT))
