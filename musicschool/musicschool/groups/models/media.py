@@ -11,10 +11,10 @@ class Media(models.Model):
     video       = models.FileField(upload_to='videos',  null=True, blank=True)
     image       = models.FileField(upload_to='images',  null=True, blank=True)
     pdf         = models.FileField(upload_to='pdf',     null=True, blank=True)
-    audio       = models.FileField(upload_to='pdf',     null=True, blank=True)
-    guitarpro   = models.FileField(upload_to='pdf',     null=True, blank=True)
+    audio       = models.FileField(upload_to='audio',   null=True, blank=True)
+    guitarpro   = models.FileField(upload_to='gp',      null=True, blank=True)
     youtubeurl  = models.CharField(max_length=50,       null=True, blank=True)
-    text 	    = models.TextField(max_length=2000,     null=True, blank=True)
+    text 	    = models.TextField(max_length=200,     null=True, blank=True)
 
     def __str__(self):
         return self.name
