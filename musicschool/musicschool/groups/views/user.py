@@ -1,9 +1,13 @@
 from django.views.generic.base import View
+from django.shortcuts import redirect, render
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import UserCreationForm
 
-class RegistrationView():
+
+class RegistrationView(View):
     template_name = "registration/signup.html"
 
-    def post(request):
+    def post(self, request):
         if request.method == 'POST':
             form = UserCreationForm(request.POST)
             if form.is_valid():

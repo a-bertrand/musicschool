@@ -8,15 +8,17 @@ class UserInformations(models.Model):
     user 	    = models.OneToOneField(
         User, 
         related_name='user_information',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
     )
     prof = models.OneToOneField(
         User, 
-        related_name='user_information',
+        related_name='prof_information',
         blank=True,
         null=True,
         on_delete=models.CASCADE
     )
 
     def __str__(self):
-        return  '%s %s' % (self.user.firstname,self.user.lastname)
+        return  '%s %s' % (self.user.first_name,self.user.last_name)
