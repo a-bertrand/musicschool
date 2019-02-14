@@ -1,6 +1,6 @@
-from musicschool.libs.logged_view import LoggedView
+from django.views.generic import View
 
-class LoggedView(LoggedView):
+class LoggedView(View):
     def dispatch(self, *args, **kwargs):
         if request.user.is_authenticated:
             return super(LoggedView, self).dispatch(*args, **kwargs)
@@ -8,15 +8,15 @@ class LoggedView(LoggedView):
             return redirect('login')
 
 
-class ProfView(LoggedView):
+class LoggedProfView(LoggedView):
     def dispatch(self, *args, **kwargs):
-        if request.user.is_authenticated:
+        if request.user.is_authenticated and request.user.user_information.is_prof:
             return super(LoggedView, self).dispatch(*args, **kwargs)
         else:
             return redirect('login')
 
 
-class StudentView(LoggedView):
+class LoggedStudentView(LoggedView):
     def dispatch(self, *args, **kwargs):
         if request.user.is_authenticated:
             return super(LoggedView, self).dispatch(*args, **kwargs)
