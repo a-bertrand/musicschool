@@ -4,10 +4,13 @@
  </nav>{% block content %}
 	<nav class="navbar navbar-expand-lg navbar-light bg-light margin-bottom-50">
 		<a class="navbar-brand" href="{% url 'home' %}">
-			Ecole de musique d'Ancenis
+			Ecole de musique d'Ancenis - Prof
 		</a>
 		<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 			<ul class="nav ">
+				<li class="nav-item active">
+					<a class="nav-link" href="{% url 'article-list' %}">Articles <span class="sr-only">Se déconnecter</span></a>
+				</li>
 				{% if user.is_authenticated %}
 					<li class="nav-item active">
 						<a class="nav-link" href="{% url 'logout' %}">Se déconnecter <span class="sr-only">Se déconnecter</span></a>

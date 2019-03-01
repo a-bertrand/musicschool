@@ -13,15 +13,18 @@ class School(models.Model):
     phone       = models.CharField(max_length=20)
     article     = models.ManyToManyField(
         "Article", 
-        verbose_name=_("Articles")
+        verbose_name = "Articles",
+        blank = True
     )
     group       = models.ManyToManyField(
-        "Group", 
-        verbose_name=_("Groupes")
+        "MemberGroup", 
+        verbose_name = "Groupes",
+        blank = True
     )
     media       = models.ManyToManyField(
         "Media", 
-        verbose_name=_("Médias")
+        verbose_name = "Médias",
+        blank = True
     )
 
 
@@ -33,15 +36,15 @@ class SchoolRight(models.Model):
         (STUDENT, STUDENT)
     )
     
-    ERPUser =   models.models.ForeignKey(
+    erp_user =   models.ForeignKey(
         ERPUser, 
-        on_delete=models.CASCADE)() 
+        on_delete=models.CASCADE
     ) 
-    School  =   models.models.ForeignKey(
+    school  =   models.ForeignKey(
         School, 
-        on_delete=models.CASCADE)() 
+        on_delete=models.CASCADE
     )    
-    Level   =   models.CharField(
+    level   =   models.CharField(
         max_length=20, 
         choices=LEVEL_USER_CHOICES, 
         default=STUDENT

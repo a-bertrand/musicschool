@@ -1,16 +1,13 @@
-from musicschool.libs.logged_view import LoggedProfView
+from musicschool.libs.logged_view import LoggedProfView, LoggedStudentView
 from musicschool.groups.models import MemberGroup, Media, Article
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
+from musicschool.groups.forms import ArticleForm
+from django.shortcuts import get_object_or_404
 
-
-
-def user_is_prof_and_auth():
-    return True
-    return False
 
 # Detail 
-class ArticleDetailView(LoggedStuddentView):
+class ArticleDetailView(LoggedStudentView):
     template_name = "article/home.html"
     
     def get(self, request, article_id):
@@ -23,8 +20,7 @@ class ArticleDetailView(LoggedStuddentView):
                         request, 
                         'article_detail.html', 
                         {
-                            'article':article, 
-                            'medias': article.media.all()
+                            'article':article,
                         }
                     ) 
                 else:
@@ -37,10 +33,10 @@ class ArticleDetailView(LoggedStuddentView):
 
 # List 
 class ArticleListView(LoggedProfView):
-    template_name = "prof/article_add_edit.html"
+    template_name = "prof/article_list.html"
     
     def get(self, request):
-        article = Article.objects.all()
+        articles = Article.objects.all()
         return render(
             request, 
             self.template_name, 
@@ -51,16 +47,43 @@ class ArticleListView(LoggedProfView):
 
 
 #Edit - add
-class ArticleManageView(View):
+class ArticleManageView(LoggedProfView):
     template_name = "prof/article_add_edit.html"
     
-    def get(self, request, article_id):
-        article = Article.objects.get(pk=article_id)
-        return render(
-            request, 
-            'article_detail.html', 
-            {
-                'article':article, 
-                'medias': article.media.all()
-            }
-        ) 
+    def get(self, request, article_id = None):
+        if article_id:
+            article = get_object_or_404(Article, pk=article_id)
+            article_form = ArticleForm(instance=article)
+            return render(
+                request, 
+                self.template_name,
+                {
+                   'article_form': article_form
+                }
+            ) 
+        else:
+            article_form = ArticleForm()
+            return render(
+                request, 
+                self.template_name,
+                {
+                    'article_form': article_form
+                }
+            ) 
+
+    def post(self, request, article_id = None):
+        if article_id:
+            article = get_object_or_404(Article, pk=article_id)
+            article_form = ArticleForm(request.POST or None, instance=article)
+        else:
+            article_form = ArticleForm(request.POST)
+        if article_form.is_valid():
+            article_form.save()
+            return redirect('article-list')
+
+#Delete
+class ArticleDeleteView(LoggedProfView):            
+    def get(self, request, article_id = None):
+        article = get_object_or_404(Article, pk=article_id)
+        article.delete()
+        return redirect('article-list')

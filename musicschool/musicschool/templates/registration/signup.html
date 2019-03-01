@@ -33,13 +33,27 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="formGroupExampleInput">Pseudonyme :</label>
-			<input name="{{form.username.name}}" type="text" class="form-control" id="formGroupExampleInput" required>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="formGroupExampleInput">Identifiant :</label>
+					<input name="{{form.username.name}}" type="text" class="form-control" id="formGroupExampleInput" required>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="tel">Téléphone : </label>
+					<input name="phone" type="tel" class="form-control" id="tel" aria-describedby="emailHelp" required>
+				</div>
+			</div>
 		</div>
 		<div class="form-group">
 			<label for="exampleInputEmail1">Adresse email :</label>
 			<input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+		</div>
+		<div class="form-group">
+			<label for="address">Adresse : </label>
+			<input name="adress" type="text" class="form-control" id="address" aria-describedby="emailHelp" required>
 		</div>
 		<hr/>
 		<div class="row">

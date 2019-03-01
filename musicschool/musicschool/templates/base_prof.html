@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,9 @@
 </head>
 <body>
   <main>
-  {% include "layout/header.html" %}
+  {% include "layout/header_prof.html" %}
+  
+
     <div class="container">
       {% block content %}
         

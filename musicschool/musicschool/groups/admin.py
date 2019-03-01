@@ -7,7 +7,9 @@ from .models import (
     Category,
     Media, 
     MemberGroup,
-    UserInformations
+    School,
+    SchoolRight,
+    ERPUser
 )
 
 
@@ -23,7 +25,7 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display = ('id','title')
 
 
-class UserInformationsAdmin(admin.ModelAdmin):
+class ERPUserAdmin(admin.ModelAdmin):
     list_display = (
         'id', 
         'get_firstname', 
@@ -50,9 +52,20 @@ class CategoryAdmin(admin.ModelAdmin):
     )
 
 
+class SchoolAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'name'
+    )
+
+class SchoolRightAdmin(admin.ModelAdmin):
+    list_display = ('id',)
+
+admin.site.register(School, SchoolAdmin)
+admin.site.register(SchoolRight, SchoolRightAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Media, MediaAdmin)
 
 admin.site.register(MemberGroup, MemberGroupAdmin)
 admin.site.register(Article, ArticleAdmin)
-admin.site.register(UserInformations, UserInformationsAdmin)
+admin.site.register(ERPUser, ERPUserAdmin)

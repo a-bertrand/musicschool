@@ -1,7 +1,7 @@
 {% extends 'base_prof.html' %}
 {% block content %}
     <a class="btn btn-primary" href='{% url "article-add" %}'>
-        Ajouter un article
+        Ajouter un media
     </a>
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
@@ -13,16 +13,11 @@
             </tr>
         </thead>
         <tbody>
-            {% for article in  articles %}
+            {% for media in  medias %}
                 <tr>
-                    <td>{{article.id}}</td>
-                    <td>{{article.title}}</td>
-                    <td>
-                        {% if article.categories.all is None %}
-                            {{article.categories}}
-                        {% endif %}
-                    </td>
-                    <td><a href="{%url 'article-edit' article.id %}">edit</a> / <a href="{% url 'article-del' article.id %}">del</a></td>
+                    <td>{{media.id}}</td>
+                    <td>{{media.title}}</td>
+                    <td><a href="{% url 'media-del' media.id %}">del</a></td>
                 </tr>
             {% endfor %}
         </tbody>
