@@ -30,10 +30,12 @@ class Lessons(models.Model):
     }
 
     def get_3_next_lesson(self):
-        next_date_in_3_weeks = datetime.today() + timedelta(days=27)
+        next_date_in_3_weeks = datetime.today() + timedelta(days=21)
         all_dates = []
-        for date in self.dates.all():
-            if date.date < next_date_in_3_weeks.date() and date.date > datetime.today().date() :
+        for date in self.dates.all().order_by('date'):
+            if len(all_dates) > 2:
+                break;
+            if date.date > datetime.today().date():
                 all_dates.append(date)
         return(all_dates)
 

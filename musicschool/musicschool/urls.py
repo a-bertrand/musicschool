@@ -11,6 +11,9 @@ from musicschool.groups.views import (
     ArticleListView,
     ArticleManageView,
     ArticleDeleteView,
+    CategoryListView,
+    CategoryManageView,
+    CategoryDeleteView,
     home_redirect,
     MediaListView,
     MediaManageView,
@@ -57,6 +60,13 @@ urlpatterns = [
     path('media/<int:media_id>/edit/', MediaManageView.as_view(), name='media-edit'),
     path('media/add/', MediaManageView.as_view(), name='media-add'),
     path('media/<int:media_id>/del/', MediaDeleteView.as_view(), name='media-del'),
+
+    ###############################################################
+    # category 
+    path('category/list/', CategoryListView.as_view(), name='category-list'),
+    path('category/<int:category_id>/edit/', CategoryManageView.as_view(), name='category-edit'),
+    path('category/add/', CategoryManageView.as_view(), name='category-add'),
+    path('category/<int:category_id>/del/', CategoryDeleteView.as_view(), name='category-del'),
 
     ###############################################################
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

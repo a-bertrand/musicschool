@@ -2,10 +2,17 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 	{% if user.is_authenticated %}
-		Bonjour {{ user.username }} !
+		Bonjour {{ user.username }} ! ff
 		<br/>
 		{% if membergroup is not None %}
 		<hr>
+			Mes prochains cours :
+			{% if request.user.user_information.lessons %}
+			aze
+				{% for date_lesson in user.user_information.lessons.get_3_next_lesson %}
+					{{date_lesson.date |date:"l d F Y"}} /
+				{% endfor %}
+			{% endif %}
 			<h2>
 				Mes cours du groupe {{membergroup}}: 
 			</h2>

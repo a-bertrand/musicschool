@@ -9,6 +9,11 @@ from .user import (
     UserManageView,
     UserDeleteView
 )
+from .category import (
+    CategoryListView,
+    CategoryManageView,
+    CategoryDeleteView
+)
 from .media import (
     MediaListView,
     MediaManageView,
@@ -24,6 +29,9 @@ __all__ =  [
     'ArticleListView',
     'ArticleManageView',
     'ArticleDeleteView',
+    'CategoryListView',
+    'CategoryManageView',
+    'CategoryDeleteView',
     'home_redirect',
     'MediaListView',
     'MediaManageView',

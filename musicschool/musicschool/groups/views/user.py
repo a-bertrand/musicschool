@@ -110,7 +110,7 @@ class UserManageView(View):
         new_lessons = Lessons(user=erp_user)
         new_lessons.save()
         next_date_year = date_of_the_first_lesson + timedelta(days=365)
-        index = date_of_the_first_lesson.weekday()
+        index = 0
         while index < 52:
             add_day = index * 7
             date_to_add = date_of_the_first_lesson + timedelta(days=add_day) 

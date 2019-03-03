@@ -18,9 +18,9 @@
                     <td>{{article.id}}</td>
                     <td>{{article.title}}</td>
                     <td>
-                        {% if article.categories.all is None %}
-                            {{article.categories}}
-                        {% endif %}
+                        {% for category in article.categories.all %}
+                            {{category.name}},
+                        {% endfor %}
                     </td>
                     <td>
                         <a href="{% url 'article-detail' article.id %}">voir</a> /
