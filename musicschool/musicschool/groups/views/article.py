@@ -11,29 +11,31 @@ class ArticleDetailView(LoggedStudentView):
     template_name = "article/home.html"
     
     def get(self, request, article_id):
-        try:
-            if User.is_authenticated:   
-                article = Article.objects.get(pk=article_id)
-                membergroup =  request.user.members_group.all()[0]
-                if article in membergroup.articles.all():
-                    return render(
-                        request, 
-                        'article_detail.html', 
-                        {
-                            'article':article,
-                        }
-                    ) 
-                else:
-                    return render(request, 'layout/not_right_page.html')
-            else:
-                return redirect('login')
-        except:
-            return redirect('login')
+        article = get_object_or_404(Article, pk=article_id)
+        if request.user.is_staff or request.user.user_information.is_prof:
+            return render(
+                request, 
+                'article_detail.html', 
+                {
+                    'article':article,
+                }
+            )
+        elif request.user.is_authenticated:   
+            membergroup =  request.user.members_group.all()[0]
+            if article in membergroup.articles.all():
+                return render(
+                    request, 
+                    'article_detail.html', 
+                    {
+                        'article':article,
+                    }
+                ) 
+        return redirect('login')
 
 
 # List 
 class ArticleListView(LoggedProfView):
-    template_name = "prof/article_list.html"
+    template_name = "prof/article/article_list.html"
     
     def get(self, request):
         articles = Article.objects.all()
@@ -48,7 +50,7 @@ class ArticleListView(LoggedProfView):
 
 #Edit - add
 class ArticleManageView(LoggedProfView):
-    template_name = "prof/article_add_edit.html"
+    template_name = "prof/article/article_add_edit.html"
     
     def get(self, request, article_id = None):
         if article_id:

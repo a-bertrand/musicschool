@@ -5,6 +5,7 @@ from django.db import models
 from .models import (
     Article, 
     Category,
+    Lessons,
     Media, 
     MemberGroup,
     School,
@@ -61,6 +62,11 @@ class SchoolAdmin(admin.ModelAdmin):
 class SchoolRightAdmin(admin.ModelAdmin):
     list_display = ('id',)
 
+
+class LessonsAdmin(admin.ModelAdmin):
+    list_display = ('id',)
+
+admin.site.register(Lessons, LessonsAdmin)
 admin.site.register(School, SchoolAdmin)
 admin.site.register(SchoolRight, SchoolRightAdmin)
 admin.site.register(Category, CategoryAdmin)

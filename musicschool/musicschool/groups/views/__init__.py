@@ -4,6 +4,16 @@ from .article import (
     ArticleManageView,
     ArticleDeleteView
 )
+from .user import (
+    UserListView,
+    UserManageView,
+    UserDeleteView
+)
+from .media import (
+    MediaListView,
+    MediaManageView,
+    MediaDeleteView
+)
 from .main import home_redirect
 from .prof import ProfView
 from .student import StudentView
@@ -15,7 +25,14 @@ __all__ =  [
     'ArticleManageView',
     'ArticleDeleteView',
     'home_redirect',
+    'MediaListView',
+    'MediaManageView',
+    'MediaDeleteView',
     'ProfView',
     'StudentView',
-    'RegistrationView'
+    'RegistrationView',
+    'UserListView',
+    'UserManageView',
+    'UserDeleteView',
+
 ]

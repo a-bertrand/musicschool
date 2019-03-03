@@ -2,8 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from .article import Article
 from .media import Media
-from .membergroup import MemberGroup
-from .userinformation import ERPUser
 from .category import Category
 
 
@@ -37,11 +35,11 @@ class SchoolRight(models.Model):
     )
     
     erp_user =   models.ForeignKey(
-        ERPUser, 
+        'ERPUser', 
         on_delete=models.CASCADE
     ) 
     school  =   models.ForeignKey(
-        School, 
+        'School', 
         on_delete=models.CASCADE
     )    
     level   =   models.CharField(

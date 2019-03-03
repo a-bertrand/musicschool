@@ -21,3 +21,8 @@ class Media(models.Model):
 
     def image_url(self):
         return ("/musicschool/media/%s" % (self.image))
+    
+    def get_youtube_url_clean(self):
+        base_youtube_url = "https://www.youtube.com/embed/"
+        return f"{base_youtube_url}{self.youtubeurl}"
+        

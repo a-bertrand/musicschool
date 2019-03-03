@@ -12,9 +12,15 @@ from musicschool.groups.views import (
     ArticleManageView,
     ArticleDeleteView,
     home_redirect,
+    MediaListView,
+    MediaManageView,
+    MediaDeleteView,
     ProfView,
     StudentView,
-    RegistrationView
+    RegistrationView,
+    UserListView,
+    UserManageView,
+    UserDeleteView
 )
 
 urlpatterns = [
@@ -36,7 +42,21 @@ urlpatterns = [
     path('article/list/', ArticleListView.as_view(), name='article-list'),
     path('article/<int:article_id>/edit/', ArticleManageView.as_view(), name='article-edit'),
     path('article/add/', ArticleManageView.as_view(), name='article-add'),
-    path('article/<int:article_id>/del/', ArticleDeleteView.as_view(), name='article-del')
+    path('article/<int:article_id>/del/', ArticleDeleteView.as_view(), name='article-del'),
+
+    ###############################################################
+    # user 
+    path('user/list/', UserListView.as_view(), name='user-list'),
+    path('user/<int:user_id>/edit/', UserManageView.as_view(), name='user-edit'),
+    path('user/add/', UserManageView.as_view(), name='user-add'),
+    path('user/<int:user_id>/del/', UserDeleteView.as_view(), name='user-del'),
+
+    ###############################################################
+    # media 
+    path('media/list/', MediaListView.as_view(), name='media-list'),
+    path('media/<int:media_id>/edit/', MediaManageView.as_view(), name='media-edit'),
+    path('media/add/', MediaManageView.as_view(), name='media-add'),
+    path('media/<int:media_id>/del/', MediaDeleteView.as_view(), name='media-del'),
 
     ###############################################################
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

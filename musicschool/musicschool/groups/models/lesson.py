@@ -1,31 +1,23 @@
-import datetime
-from datetime import date, timedelta
-from dateutil.relativedelta import relativedelta
-"""
-    cours :
-        choisir un eleve 
-        lui dire tous les lundi 
-        ajouter tous les lundi de l'année 
-        
-        
-    eleve 
-        
-    class Cours
-        Label
-        Date 
-        User 
+from datetime import date, timedelta, datetime
+from django.db import models
+from .userinformation import ERPUser
 
-    
-    def create(jour):
-        for each lundi dans l'année 
-            self.addTimeStamp(date)
 
-    class TimestampModel()
-        date_meet = DateTimeField()
-"""
+class LessonDate(models.Model):
+    date = models.DateField()
+    lesson = models.ForeignKey(
+        'Lessons',
+         related_name='dates', 
+         on_delete=models.CASCADE,
+         null=True
+    )
+
+
 class Lessons(models.Model):
-    dates = models.ManyToManyField()
-    user = models.ForeignKey("app.Model", verbose_name=_(""), on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        "ERPUser", 
+        on_delete=models.CASCADE
+    )
 
     DAY_OF_THE_WEEK = {
         '1' : 'Monday',
@@ -37,32 +29,20 @@ class Lessons(models.Model):
         '7' : 'Sunday',
     }
 
-    # asked the date of the first lesson
-    def create_year_school(self, date_of_the_first_lesson)
-        next_date_year = date_of_the_first_lesson + timedelta(days=365)
-        add_day = 7
-        index = 1
-        while date_of_the_first_lesson < next_date_year:
-            add_day = index * add_day
-            date_to_add = date_of_the_first_lesson + timedelta(days=add_day))
-            print(date_to_add.weekdays(), date_to_add.day, date_to_add.month ,date_to_add.year)
-            if add_day > 100:
-                break;
-            index = index + 1;
+    def get_3_next_lesson(self):
+        next_date_in_3_weeks = datetime.today() + timedelta(days=27)
+        all_dates = []
+        for date in self.dates.all():
+            if date.date < next_date_in_3_weeks.date() and date.date > datetime.today().date() :
+                all_dates.append(date)
+        return(all_dates)
 
-        if now_date == date_of_the_first_lesson:
-            #its ok 
-            pass 
-            
-
-        date += timedelta(days =  - now_date.weekday()) 
-        # Get first weekday_asked 
-        # loops and add one day 
-        while d.year == year:
-            yield d
-            d += timedelta(days = 7)
-
-        for d in allsundays(now_date.):
+    def get_next_lesson(self):
+        all_dates = []
+        for date in self.dates.all():
+            if date.date > datetime.today().date():
+                all_dates.append(date)
+        return(all_dates)
 
 '''
 en premier trouver le chiffre du jour 
