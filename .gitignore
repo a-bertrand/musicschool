@@ -18,3 +18,5 @@ musicschool/include
 musicschool/db.sqlite3
 musicschool/musicschool__pycache__
 musicschool/musicschool/media/
+musicschool/musicschool/settings/dev.py
+musicschool/musicschool/settings/prod.py
