@@ -10,8 +10,9 @@ __pycache__/
 
 include/
 bin/
-.vscode
+.vscode/
 tcl/
+Lib/
 musicschool/Lib
 musicschool/include
 musicschool/db.sqlite3
