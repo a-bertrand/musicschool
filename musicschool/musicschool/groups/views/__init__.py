@@ -4,11 +4,6 @@ from .article import (
     ArticleManageView,
     ArticleDeleteView
 )
-from .user import (
-    UserListView,
-    UserManageView,
-    UserDeleteView
-)
 from .category import (
     CategoryListView,
     CategoryManageView,
@@ -18,6 +13,16 @@ from .media import (
     MediaListView,
     MediaManageView,
     MediaDeleteView
+)
+from .membergroup import (
+    MemberGroupListView,
+    MemberGroupManageView,
+    MemberGroupDeleteView
+)
+from .user import (
+    UserListView,
+    UserManageView,
+    UserDeleteView
 )
 from .main import home_redirect
 from .prof import ProfView
@@ -33,6 +38,9 @@ __all__ =  [
     'CategoryManageView',
     'CategoryDeleteView',
     'home_redirect',
+    'MemberGroupListView',
+    'MemberGroupManageView',
+    'MemberGroupDeleteView',
     'MediaListView',
     'MediaManageView',
     'MediaDeleteView',

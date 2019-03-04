@@ -18,6 +18,9 @@ from musicschool.groups.views import (
     MediaListView,
     MediaManageView,
     MediaDeleteView,
+    MemberGroupListView,
+    MemberGroupManageView,
+    MemberGroupDeleteView,
     ProfView,
     StudentView,
     RegistrationView,
@@ -53,6 +56,13 @@ urlpatterns = [
     path('user/<int:user_id>/edit/', UserManageView.as_view(), name='user-edit'),
     path('user/add/', UserManageView.as_view(), name='user-add'),
     path('user/<int:user_id>/del/', UserDeleteView.as_view(), name='user-del'),
+
+    ##############################################################
+    # membergroup
+    path('membergroup/list/', MemberGroupListView.as_view(), name='membergroup-list'),
+    path('membergroup/<int:member_group_id>/edit/', MemberGroupManageView.as_view(), name='membergroup-edit'),
+    path('membergroup/add/', MemberGroupManageView.as_view(), name='membergroup-add'),
+    path('membergroup/<int:member_group_id>/del/', MemberGroupDeleteView.as_view(), name='membergroup-del'),
 
     ###############################################################
     # media 

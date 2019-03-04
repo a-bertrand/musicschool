@@ -11,7 +11,7 @@ class StudentView(View):
             if request.user.is_staff:
                 return redirect('/admin')
             elif request.user.is_authenticated:
-                membergroup =  request.user.user_information.members_group.all()[0]
+                membergroup =  request.user.erp_user.members_group.all()[0]
                 return render(
                     request, 
                     'home.html',
