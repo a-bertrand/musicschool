@@ -17,3 +17,4 @@ musicschool/Lib
 musicschool/include
 musicschool/db.sqlite3
 musicschool/musicschool__pycache__
+musicschool/musicschool/media/
