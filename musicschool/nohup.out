@@ -1,9 +1,0 @@
-Performing system checks...
-
-urls.py MEDIA_URL: /musicschool/media/
-urls.py MEDIA_ROOT: /Users/anthonybertrand/Documents/Dev/musicschool/musicschool/musicschool/musicschool/media
-System check identified no issues (0 silenced).
-January 13, 2019 - 15:37:19
-Django version 2.1.1, using settings 'musicschool.settings'
-Starting development server at http://127.0.0.1:8000/
-Quit the server with CONTROL-C.
